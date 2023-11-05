@@ -15,7 +15,7 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:4200")); // Adjust this to match your Angular app's origin.
+        config.setAllowedOrigins(Arrays.asList("http://localhost:4200")); 
         config.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT"));
         config.setAllowedHeaders(Arrays.asList("*"));
 
