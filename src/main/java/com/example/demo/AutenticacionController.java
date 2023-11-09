@@ -15,7 +15,7 @@ public class AutenticacionController {
         System.out.println("----------1<<<<<<<>>>>>><-------");
         System.out.println(  correo + " --- " + contrasena);
         JWTProveedorToken jwtProveedorToken = new JWTProveedorToken();
-        return  new JWTToken(jwtProveedorToken.generateToken(correo), JWTFiltroAutorizacion.PREFIX) ;
+        return  new JWTToken(jwtProveedorToken.generateToken(correo, contrasena), JWTFiltroAutorizacion.PREFIX) ;
     }
 }
 

@@ -14,7 +14,6 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 
-
 @Component
 public class JWTProveedorToken {
 
@@ -29,16 +28,21 @@ public class JWTProveedorToken {
     }
 
     // generate JWT token
-    public String generateToken(String username){
+    public String generateToken(String username, String password){
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + jwtExpirationDate);
 
 
         Map<String, Object>authoritiesClaim = new HashMap<>();
         authoritiesClaim.put("authorities", new SimpleGrantedAuthority("Prueba"));
+        
+        Map<String, Object> additionalClaims = new HashMap<>();
+        additionalClaims.put("username", username);
+        additionalClaims.put("password", password);
 
         return Jwts.builder()
                                 .addClaims(authoritiesClaim)
+                                .addClaims(additionalClaims)
                                 .setSubject(username)
                                 .setIssuedAt(new Date())
                                 .setExpiration(expireDate)
@@ -65,5 +69,8 @@ public class JWTProveedorToken {
                     .parseClaimsJws(token);
         return claimsJws.getBody();
     }
+
+ 
+    
 
 }
