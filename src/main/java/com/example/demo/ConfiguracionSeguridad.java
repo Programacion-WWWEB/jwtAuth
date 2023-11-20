@@ -37,6 +37,8 @@ public class ConfiguracionSeguridad {
         http.addFilterAfter(jwtFiltroAutorizacion, UsernamePasswordAuthenticationFilter.class).authorizeRequests(authorize -> {
             authorize.
                     antMatchers(HttpMethod.POST, "/public/autenticacion-usuario").permitAll()
+                    
+                    .antMatchers(HttpMethod.POST, "/admin/autenticacion-usuario").permitAll()
                     .anyRequest().authenticated();
 
         }).csrf(csrf -> csrf.ignoringRequestMatchers(ignoreSpecificRequests()));
@@ -46,7 +48,8 @@ public class ConfiguracionSeguridad {
 
 	private RequestMatcher ignoreSpecificRequests() {
         return new OrRequestMatcher(
-            new AntPathRequestMatcher("/public/autenticacion-usuario")
+            new AntPathRequestMatcher("/public/autenticacion-usuario"),
+            new AntPathRequestMatcher("/admin/autenticacion-usuario")
         );
     }
 }
