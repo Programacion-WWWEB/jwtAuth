@@ -30,7 +30,8 @@ public class SecurityConfig {
                         )
                         .formLogin(withDefaults())
                         .httpBasic(withDefault())
-                        .cors().and().csrf().disable();
+                        .cors().and().csrf().disable()
+                        .logout();
             }
         };
     }
