@@ -24,7 +24,7 @@ public class JWTProveedorToken {
 
     public JWTProveedorToken(){
         jwtSecret = "daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb";
-        jwtExpirationDate = 604800000;
+        jwtExpirationDate = 604800000;  
     }
 
     // generate JWT token
